@@ -1,31 +1,34 @@
-
-[tool.poetry]
+[project]
 name = "xaw-pbe"
 version = "1.0.0"
 description = "Python backend for XAW"
-authors = ["Robert King <varitonium@gmail.com>"]
+authors = [{ name = "Robert King", email = "varitonium@gmail.com" }]
 readme = "README.md"
 
-[tool.poetry.dependencies]
-python = "^3.14"
-fastapi = "^0.101.1"
-fastapi-manage = "^0.8.0"
-pydantic = "^2.1.1"
-uuid = "^1.30"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "pydantic>=2.7,<3.0",
+    "uvicorn[standard]>=0.30,<1.0",
+]
 
-# dependencies needed by the ci
-black = "26.5.1" 
-pycodestyle = "2.15.0"
-pydocstyle = "6.3.0
-pytest = "9.1.1" 
-pytest-asyncio = "1.4.0"
-pytest-html = "4.2.0"
-ruff = "0.16.9"
-bandit = "1.9.4"
-sphinx = "9.1.0"
-furo = "2025.12.19"
-coverage = "7.16.2"
+# uv includes dev by default; use `uv sync --no-dev` for runtime only.
+[dependency-groups]
+dev = [
+    "black>=24,<27",
+    "pycodestyle>=2.12,<3",
+    "pydocstyle>=6.3,<7",
+    "pytest>=8,<10",
+    "pytest-asyncio>=0.24,<2",
+    "pytest-html>=4.1,<5",
+    "ruff>=0.6,<1",
+    "bandit>=1.7,<2",
+    "coverage>=7.6,<8",
+]
+docs = [
+    "sphinx>=8,<9",
+    "furo>=2024.8.6",
+]
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+package = false
