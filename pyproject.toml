@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "xaw-pbe"
+version = "0.1.0"
+description = "Python backend for XAW"
+authors = ["Robert King <varitonium@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.14"
+fastapi = "^0.101.1"
+fastapi-manage = "^0.8.0"
+pydantic = "^2.1.1"
+uuid = "^1.30"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
