@@ -1,2 +1,16 @@
+#vim extensions
 *.swp
-.venv/
+*.swo
+*.swn
+
+#python extensions
+*.pyc
+*.cpython-314.pyc
+
+#folders to ignore
+__pycache__/
+#files to ignore
+.coverage
+coverage.json
+.env
+*.log

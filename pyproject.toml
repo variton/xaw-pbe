@@ -10,6 +10,7 @@ dependencies = [
     "fastapi>=0.115,<1.0",
     "pydantic>=2.7,<3.0",
     "fastapi[standard]",
+    "httpx2",
     "uvicorn[standard]>=0.30,<1.0",
 ]
 
