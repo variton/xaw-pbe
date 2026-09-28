@@ -12,6 +12,7 @@ dependencies = [
     "fastapi[standard]",
     "httpx2",
     "uvicorn[standard]>=0.30,<1.0",
+    "hypercorn>=0.18.0",
 ]
 
 # uv includes dev by default; use `uv sync --no-dev` for runtime only.
