@@ -5,6 +5,7 @@ from fastapi import FastAPI, HTTPException, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes.hbeat import hbeat_router
+from routes.login import login_router
 
 
 @asynccontextmanager
@@ -17,7 +18,7 @@ app = FastAPI(lifespan=lifespan)
 
 print("starting server ...")
 
-origins = ["http://localhost"]
+origins = ["http://localhost:5173"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,3 +30,4 @@ app.add_middleware(
 )
 
 app.include_router(hbeat_router)
+app.include_router(login_router)
