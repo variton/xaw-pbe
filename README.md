@@ -27,10 +27,39 @@ Check that FastAPI imports successfully:
 uv run python -c "import fastapi; print(fastapi.__version__)"
 ```
 
-## Current status
+## Run the backend
 
-The initial FastAPI application is in `src/xaw-pbe.py`. It still needs a
-`CORSMiddleware` import before it can start. There is no test suite yet.
+Start the FastAPI application from the project directory:
+
+```bash
+uv run uvicorn xawpbe:app --app-dir src --host 127.0.0.1 --port 7777
+```
+
+## Run tests
+
+Run the Python endpoint tests:
+
+```bash
+PYTHONPATH=src uv run pytest
+```
+
+With the backend running, execute all shell tests in a separate terminal:
+
+```bash
+BASE_URL=http://127.0.0.1:7777 bash nr-tests/run-tests.sh
+```
+
+The runner discovers `test-*.sh` scripts in `nr-tests` and executes them in
+filename order. Each test checks the HTTP status and JSON response body.
+If a test fails, the runner prints an error, stops immediately, and exits with
+that test's nonzero exit code. It prints `All tests passed` and exits with code
+0 when every test succeeds. An empty test directory produces exit code 1.
+
+Shell tests require Bash, curl, and Python 3. Set `BASE_URL` to the backend
+address so every test uses the same server. See [the shell test documentation](nr-tests/README.md)
+for individual test commands and instructions for adding tests.
+
+## Dependency management
 
 Dependencies are declared in `pyproject.toml`. Run Python commands inside the
 managed environment with `uv run <command>`. Commit `uv.lock` to keep dependency
