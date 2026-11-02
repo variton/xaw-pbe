@@ -13,7 +13,11 @@ dependencies = [
     "httpx2",
     "uvicorn[standard]>=0.30,<1.0",
     "hypercorn>=0.18.0",
+    "xphide"
 ]
+
+[tool.uv.sources]
+xphide = { git = "https://github.com/variton/xphide.git", tag = "v0.1.1" }
 
 # uv includes dev by default; use `uv sync --no-dev` for runtime only.
 [dependency-groups]
